@@ -1,6 +1,6 @@
 export interface AlunoProps {
   nome: string;
-  idade?: number;
+  idade: string;
 }
 
 export interface HeaderProps {
