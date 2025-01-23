@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import "./App.css";
 
 export default function App() {
@@ -28,7 +28,7 @@ export default function App() {
     localStorage.setItem("@cursoreact", JSON.stringify(tasks));
   }, [tasks]);
 
-  function handleRegister() {
+  const handleRegister = useCallback(() => {
     if (!input) {
       alert("Preencha o nome da sua tarefa");
       return;
@@ -41,7 +41,7 @@ export default function App() {
 
     setTasks((tarefas) => [...tarefas, input]);
     setInput("");
-  }
+  }, [input, tasks]);
 
   function handleDelete(item: string) {
     const removeTask = tasks.filter((task) => task !== item);
