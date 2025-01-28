@@ -1,34 +1,59 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { FormEvent, useState } from 'react'
 import './App.css'
+import { ResultadoProps } from './utils/interface'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [nome, setNome] = useState("")
+  const [ano, setAno] = useState("")
+  const [resultado, setResultado] = useState<ResultadoProps>()
+
+  function descobrirIdade(e: FormEvent){
+    e.preventDefault();
+
+    const currentYear = new Date().getUTCFullYear();
+    setResultado({
+      nome: nome,
+      idade: currentYear - Number(ano)
+    });
+
+    setNome("")
+    setAno("")
+
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+    <div className="container">
+      <h1>Descubra sua idade</h1>
+
+      <form className="form" onSubmit={descobrirIdade}>
+        <label className="label">Digite seu nome</label>
+        <input
+          className="input"
+          placeholder="Digite seu nome..."
+          value={nome}
+          onChange={ (e) => setNome(e.target.value) }
+        />
+
+        <label className="label">Digite o ano que nasceu</label>
+        <input
+          className="input"
+          placeholder="Digite seu nome..."
+          value={ano}
+          onChange={ (e) => setAno(e.target.value) }
+        />
+
+        <button type="submit" onClick={descobrirIdade}>
+          Descobrir idade
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      </form>
+
+      {resultado && resultado.nome !== '' && (
+      <section className="result">
+        <h2>{resultado?.nome}, você tem: <span>{resultado?.idade} anos</span> </h2>
+      </section>
+      )}
+
+    </div>
   )
 }
 
