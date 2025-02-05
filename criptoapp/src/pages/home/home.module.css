@@ -20,3 +20,17 @@
 .form button{
     background: transparent;
 }
+
+table{
+    border-collapse: separate;
+    border-spacing:  0 14px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+}
+
+table caption{
+    font-size: 16px;
+    margin: 0.5em 0 .75em;
+}
