@@ -34,3 +34,11 @@ table caption{
     font-size: 16px;
     margin: 0.5em 0 .75em;
 }
+
+th{
+    color: #FFF;
+}
+
+.tr{
+    background-color: #1d1c20;
+}
