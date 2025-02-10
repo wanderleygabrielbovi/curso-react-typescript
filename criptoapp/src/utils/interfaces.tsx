@@ -15,8 +15,3 @@ export interface CoinProps{
     formatedMarket?: string;
     formatedVolume?: string;
 }
-
-export interface DataProp{
-    data: CoinProps[]
-}
-

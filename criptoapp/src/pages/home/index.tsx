@@ -3,7 +3,10 @@ import styles from './home.module.css';
 import { BsSearch } from 'react-icons/bs';
 import { Link, useNavigate } from 'react-router-dom';
 import { CoinProps } from '../../utils/interfaces';
-import { DataProp } from '../../utils/interfaces';
+
+export interface DataProp{
+  data: CoinProps[]
+}
 
 export function Home() {
     const [input, setInput] = useState("");
