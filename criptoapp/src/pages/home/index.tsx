@@ -55,7 +55,7 @@ export function Home() {
     function handleSubmit(e: FormEvent) {
       e.preventDefault();
 
-      navigate(`/datail/${input}`)
+      navigate(`/detail/${input}`)
     }
 
     function handleGetMore() {

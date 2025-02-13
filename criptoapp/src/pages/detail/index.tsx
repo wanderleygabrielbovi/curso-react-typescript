@@ -65,24 +65,43 @@ export function Detail() {
 
   if (loading || !coin) {
     return (
-      <div className="styles.container">
-        <h4 className="styles.center">Carregando...</h4>
+      <div className={Styles.container}>
+        <h4 className={Styles.center}>Carregando...</h4>
       </div>
     )
   }
   
   return (
       <>
-        <div className="styles.container">
-          <h1 className="styles.center">{coin?.name}</h1>
-          <h1 className="styles.center">{coin?.symbol}</h1>
+        <div className={Styles.container}>
+          <h1 className={Styles.center}>{coin?.name}</h1>
+          <h1 className={Styles.center}>{coin?.symbol}</h1>
 
-          <section className="content">
+          <section className={Styles.content}>
             <img 
-              src="" 
-              alt="" 
+              src={`https://assets.coincap.io/assets/icons/${coin?.symbol.toLowerCase()}@2x.png`}
+              alt="Logo da moeda"
+              className={Styles.logo} 
             />
+            <h1>{coin?.name} | {coin?.symbol}</h1>
+
+            <p><strong>Preço: </strong>{coin.formatedPrice}</p>
+
+            <a>
+              <strong>Mercado: </strong>{coin.formatedMarket}
+            </a>
+
+            <a>
+              <strong>Volume: </strong>{coin.formatedVolume}
+            </a>
+
+            <a>
+              <strong>Mudança 24h: </strong><span className={Number(coin?.changePercent24Hr) > 0  ? Styles.profit : Styles.loss} >
+                {Number(coin?.changePercent24Hr).toFixed(3)}</span>
+            </a>
+
           </section>
+
         </div>
       </>
     )
